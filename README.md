@@ -105,20 +105,22 @@ Part 1: Multiple Choice
                        NOT('(?x) is alive')),<br /> 
                   THEN( '(?x) is a paradox' ) ) 
 
-rule2 = IF( AND( '(?x) is a hypothetical cat',
-                 '(?x) is alive',
-                 '(?x) is dead'),
-            THEN( "(?x) is Schrodinger's cat" ) )
+      rule2 = IF( AND( '(?x) is a hypothetical cat',
+                       '(?x) is alive',
+                       '(?x) is dead'),
+                  THEN( "(?x) is Schrodinger's cat" ) )
 
-rule3 = IF( AND( '(?x) is a hypothetical cat',
-                 NOT('(?x) is alive'),
-                 NOT('(?x) is dead')),
-            THEN( '(?x) is amortal' ) )
+      rule3 = IF( AND( '(?x) is a hypothetical cat',
+                       NOT('(?x) is alive'),
+                       NOT('(?x) is dead')),
+                  THEN( '(?x) is amortal' ) )
 
 - Question 3: Consider the following set of assertions about Kitty.
+
       assertions = ( 'Kitty is a hypothetical cat',
                      'Kitty is alive',
                      'Kitty is dead' )
+                     
    Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_3. (For example, if
    the assertions match rule1 and rule2, answer '12'.) If no rules match, answer '0'. 
    **ANSWER_3 = '2'**
