@@ -80,21 +80,23 @@ Objects and APIs
           "copy" method to avoid modifying the original point."""       
 
 Using the "key" argument
-- def sort_points_by_Y(list_of_points):
-      """Given a list of 2D points (represented as Point objects), uses "sorted"
-      with the "key" argument to create and return a list of the SAME (not copied)
-      points sorted in decreasing order based on their Y coordinates, without
-      modifying the original list."""
-- def furthest_right_point(list_of_points):
-      """Given a list of 2D points (represented as Point objects), uses "max" with
-      the "key" argument to return the point that is furthest to the right (that
-      is, the point with the largest X coordinate)."""      
+      
+      def sort_points_by_Y(list_of_points):
+          """Given a list of 2D points (represented as Point objects), uses "sorted"
+          with the "key" argument to create and return a list of the SAME (not copied)
+          points sorted in decreasing order based on their Y coordinates, without
+          modifying the original list."""
+
+      def furthest_right_point(list_of_points):
+          """Given a list of 2D points (represented as Point objects), uses "max" with
+          the "key" argument to return the point that is furthest to the right (that
+          is, the point with the largest X coordinate)."""      
 
 Note: These functions are implemented in the file lab0.py in the folder Lab0_GettingStarted   
 
-# Lab 1 - Rule-Based Systems
+## Lab 1 - Rule-Based Systems
 
-Part 1: Multiple Choice
+### Part 1: Multiple Choice
 - Question 1: In forward chaining, after all the variables in a rule have been bound, which part of the rule may appear as a new assertion in the data?
 
       1. the antecedent
@@ -185,9 +187,54 @@ Part 1: Multiple Choice
 
   **ANSWER_7 = '0'**
 
+### Part 2: Poker Hands
+
+You're given this data about poker hands:
+
+      poker_data = [ 'two-pair beats pair',
+                     'three-of-a-kind beats two-pair',
+                     'straight beats three-of-a-kind',
+                     'flush beats straight',
+                     'full-house beats flush',
+                     'straight-flush beats full-house' ]
+
+Write a one-rule system that finds all other combinations of which poker hands beat which, transitively, given some of the rankings already. For example, it should be able to deduce that a three-of-a-kind beats a pair, because a three-of-a-kind beats two-pair and a two-pair beats a pair. The rankings (data) are all provided in the form '(?x) beats (?y)'. 
+
+      transitive_rule = IF( AND( '(?x) beats (?y)',
+                                 '(?y) beats (?z)'),
+                            THEN( '(?x) beats (?z)' ))
+
+### Part 3: Family relations 
+
+You will be given data that includes two kinds of statements:
+
+    'person (?x)': x is a person
+    'parent (?x) (?y)': x is a parent of y 
+
+Every person in the data set will be explicitly defined as a person.
+
+Your task is to deduce, wherever you can, the following relations:
+
+    'sibling (?x) (?y)': x is the sibling of y (x and y are different people, but share at least one parent)
+    'child (?x) (?y)': x is the child of y
+    'cousin (?x) (?y)': x and y are cousins (a parent of x and a parent of y are siblings, but x and y are not siblings)
+    'grandparent (?x) (?y)': x is the grandparent of y
+    'grandchild (?x) (?y)': x is the grandchild of y 
 
 
+    friend_rule = IF( AND("person (?x)", "person (?y)"), THEN ("friend (?x) (?y)", "friend (?y) (?x)") )
 
+    self = IF ( 'parent (?y) (?x)', THEN ('self (?x) (?x)') )
+
+    sibling = IF ( AND('parent (?a) (?x)', 'parent (?a) (?y)', NOT('self (?x) (?y)')), THEN('sibling (?x) (?y)', 'sibling (?y) (?x)') )
+
+    child = IF ( 'parent (?y) (?x)', THEN ('child (?x) (?y)') )
+
+    cousin = IF ( AND('parent (?a) (?x)', 'parent (?b) (?y)', 'sibling (?a) (?b)'), THEN('cousin (?x) (?y)') )
+
+    grandparent = IF ( AND('parent (?a) (?y)', 'parent (?x) (?a)'), THEN('grandparent (?x) (?y)') )
+
+    grandchild = IF ( 'grandparent (?x) (?y)', THEN('grandchild (?y) (?x)') )
 
 
 
