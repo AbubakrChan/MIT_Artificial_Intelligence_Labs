@@ -94,6 +94,7 @@ Using the "key" argument
 
 Note: These functions are implemented in the file lab0.py in the folder Lab0_GettingStarted   
 
+
 ## Lab 1 - Rule-Based Systems
 
 ### Part 1: Multiple Choice
@@ -260,9 +261,123 @@ Your task is to deduce, wherever you can, the following relations:
           """
 
 
+## Lab 2 - Search
 
+### Part 1: Utility Functions 
 
+      def path_length(graph, path):
+          """Returns the total length (sum of edge weights) of a path defined by a
+          list of nodes coercing an edge-linked traversal through a graph.
+          (That is, the list of nodes defines a path through the graph.)
+          A path with fewer than 2 nodes should have length of 0.
+          You can assume that all edges along the path have a valid numeric weight."""
 
+      def has_loops(path):
+          """Returns True if this path has a loop in it, i.e. if it
+          visits a node more than once. Returns False otherwise."""
 
+      def extensions(graph, path):
+          """Returns a list of paths. Each path in the list should be a one-node
+          extension of the input path, where an extension is defined as a path formed
+          by adding a neighbor node (of the final node in the path) to the path.
+          Returned paths should not have loops, i.e. should not visit the same node
+          twice. The returned paths should be sorted in lexicographic order."""
 
+      def sort_by_heuristic(graph, goalNode, nodes):
+          """Given a list of nodes, sorts them best-to-worst based on the heuristic
+          from each node to the goal node. Here, and in general for this lab, we
+          consider a smaller heuristic value to be "better" because it represents a
+          shorter potential path to the goal. Break ties lexicographically by 
+          node name."""
 
+### Part 2: Basic Search 
+
+      def basic_dfs(graph, start, goal):
+          """
+          Performs a depth-first search on a graph from a specified start
+          node to a specified goal node, returning a path-to-goal if it
+          exists, otherwise returning None.
+          Uses backtracking, but does not use an extended set.
+          """
+
+      def basic_bfs(graph, start, goal):
+          """
+          Performs a breadth-first search on a graph from a specified start
+          node to a specified goal node, returning a path-to-goal if it
+          exists, otherwise returning None.
+          """
+ 
+### Part 3: Generic Search 
+ 
+Generic search requires four arguments:
+- sort_new_paths_fn: a function that sorts new paths that are added to the agenda
+- add_paths_to_front_of_agenda: True if new paths should be added to the front of the agenda
+- sort_agenda_fn: function to sort the agenda after adding all new paths 
+- use_extended_set: True if the algorithm should utilize an extended set
+
+Please implement the following search algorithms by designing the correct arguments to pass to the generic search algorithm. Your answer to each should be an ordered list of the appropriate four arguments to generic_search. No argument should be None. 
+
+generic_dfs = [None, None, None, None]
+generic_bfs = [None, None, None, None]
+generic_hill_climbing = [None, None, None, None]
+generic_best_first = [None, None, None, None]
+generic_branch_and_bound = [None, None, None, None]
+generic_branch_and_bound_with_heuristic = [None, None, None, None]
+generic_branch_and_bound_with_extended_set = [None, None, None, None]
+generic_a_star = [None, None, None, None]
+generic_beam = [None, None, None, None]
+
+### Part 4: Heuristics
+
+      def is_admissible(graph, goalNode):
+          """Returns True if this graph's heuristic is admissible; else False.
+          A heuristic is admissible if it is either always exactly correct or overly
+          optimistic; it never over-estimates the cost to the goal."""
+
+      def is_consistent(graph, goalNode):
+          """Returns True if this graph's heuristic is consistent; else False.
+          A consistent heuristic satisfies the following property for all
+          nodes v in the graph:
+          Suppose v is a node in the graph, and N is a neighbor of v,
+          then, heuristic(v) <= heuristic(N) + edge_weight(v, N)
+          In other words, moving from one node to a neighboring node never unfairly
+          decreases the heuristic.
+          This is equivalent to the heuristic satisfying the triangle inequality."""
+
+### Part 5: Multiple Choice
+
+- Question 1: You are in a new house and want to know where all the bedrooms are. You want to find the bedrooms as quickly as possible. Which algorithm should you use?
+
+      1. Breadth First Search
+      2. British Museum
+      3. A*
+      4. Branch and Bound with Extended Set
+  
+  **ANSWER_1 = '2'**
+
+- Question 2: You are playing a game in which you are in a maze, and you are trying to exit. All the rooms are different colors, so you know which ones you've been in before, but there is no way of telling where you are in the maze with respect to the exit (until you reach the exit). You win the game if you exit the maze as quickly as possible. Which algorithm should you use?
+
+      1. Breadth First Search
+      2. British Museum
+      3. A*
+      4. Branch and Bound with Extended Set
+  
+  **ANSWER_2 = '4'**
+
+- Question 3: Your friend Hammer is an amateur map-maker, and you have asked for directions for a route from your hometown of Oakvale to Bowerstone Marketplace. Your goal is to visit as few towns as possible along the way. Hammer is very bad at estimating distances and remembering where she's already been, so she wants to use the simplest algorithm possible to find what path you should take. Which algorithm should Hammer use?
+
+      1. Breadth First Search
+      2. British Museum
+      3. A*
+      4. Branch and Bound with Extended Set
+  
+  **ANSWER_3 = '1'**
+
+- Question 4: Hammer goes to map-maker school and becomes better at distances and memory. Now you ask her for directions for the shortest distance from Bowerstone Marketplace to Silverpine. Which algorithm should Hammer use?
+
+      1. Breadth First Search
+      2. British Museum
+      3. A*
+      4. Branch and Bound with Extended Set
+  
+  **ANSWER_4 = '3'**      
