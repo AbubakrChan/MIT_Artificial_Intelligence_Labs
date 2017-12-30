@@ -8,12 +8,13 @@ Note: Please let me know any suggestion or comment you could have about the code
 
 ## Lab 0 - Getting Started
 Warm up Functions
-- def is_even(x):
-      "If x is even, returns True; otherwise returns False"
-- def decrement(x):
-      "Given a number x, returns x - 1 unless that would be less than zero, in which case returns 0."
-- def cube(x):
-      "Given a number x, returns its cube (x^3)"      
+      
+      def is_even(x):
+          "If x is even, returns True; otherwise returns False"
+      def decrement(x):
+          "Given a number x, returns x - 1 unless that would be less than zero, in which case returns 0."
+      def cube(x):
+          "Given a number x, returns its cube (x^3)"      
 
 Iteration Functions:
 - def is_prime(x):
