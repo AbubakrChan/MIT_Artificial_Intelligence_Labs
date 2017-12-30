@@ -145,9 +145,31 @@ Part 1: Multiple Choice
 
   **ANSWER_5 = '3'**
 
-ANSWER_6 = '1'
+  In a completely different scenario, suppose we have the following two rules:
 
-ANSWER_7 = '0'
+      rule1 = IF( AND( '(?x) has feathers',
+                       '(?x) has a beak' ),
+             THEN( '(?x) is a bird' ))
+      rule2 = IF( AND( '(?y) is a bird',
+                       '(?y) cannot fly',
+                       '(?y) can swim' ),
+                  THEN( '(?y) is a penguin' ) )
+
+  and the following list of initial data:
+
+      ( 'Pendergast is a penguin',
+      'Pendergast has feathers',
+      'Pendergast has a beak',
+      'Pendergast cannot fly',
+      'Pendergast can swim' )
+
+- Question 6: After starting the system, which rule fires first? In ANSWER_6, answer '1' or '2', or '0' if neither rule fires.
+  
+  **ANSWER_6 = '1'**
+
+- Question 7: Which rule fires second? In ANSWER_7, answer '1' or '2', or '0' if neither rule fires. 
+
+  **ANSWER_7 = '0'**
 
 
 
