@@ -83,23 +83,20 @@ Note: These functions are implemented in the file lab0.py in the folder Lab0_Get
 Part 1: Multiple Choice
 - Question 1: In forward chaining, after all the variables in a rule have been bound, which part of the rule may appear as a new assertion in the data?
 
-1. the antecedent
+      1. the antecedent
+      2. the consequent
+      3. both
+      4. neither 
 
-2. the consequent
-
-3. both
-
-4. neither 
-
-**ANSWER_1 = '2'**
+     **ANSWER_1 = '2'**
 
 - Question 2: In backward chaining, after all the variables in a rule have been bound, which part of the rule may appear as a new assertion in the data?
 
-  1. the antecedent
-  2. the consequent
-  3. both
-  4. neither 
-  ANSWER_2 = '4'
+      1. the antecedent
+      2. the consequent
+      3. both
+      4. neither 
+     **ANSWER_2 = '4'**
 
 Consider the following rules about hypothetical cats.
 rule1 = IF( AND( '(?x) is a hypothetical cat',
@@ -118,9 +115,9 @@ rule3 = IF( AND( '(?x) is a hypothetical cat',
             THEN( '(?x) is amortal' ) )
 
 - Question 3: Consider the following set of assertions about Kitty.
-assertions = ( 'Kitty is a hypothetical cat',
-               'Kitty is alive',
-               'Kitty is dead' )
+      assertions = ( 'Kitty is a hypothetical cat',
+                     'Kitty is alive',
+                     'Kitty is dead' )
 Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_3. (For example, if the assertions match rule1 and rule2, answer '12'.) If no rules match, answer '0'. 
 ANSWER_3 = '2'
 
