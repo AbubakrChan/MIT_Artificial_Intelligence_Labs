@@ -200,6 +200,7 @@ You're given this data about poker hands:
 
 Write a one-rule system that finds all other combinations of which poker hands beat which, transitively, given some of the rankings already. For example, it should be able to deduce that a three-of-a-kind beats a pair, because a three-of-a-kind beats two-pair and a two-pair beats a pair. The rankings (data) are all provided in the form '(?x) beats (?y)'. 
 
+**ANSWER**
       transitive_rule = IF( AND( '(?x) beats (?y)',
                                  '(?y) beats (?z)'),
                             THEN( '(?x) beats (?z)' ))
@@ -216,12 +217,16 @@ Every person in the data set will be explicitly defined as a person.
 Your task is to deduce, wherever you can, the following relations:
 
     'sibling (?x) (?y)': x is the sibling of y (x and y are different people, but share at least one parent)
+    
     'child (?x) (?y)': x is the child of y
+    
     'cousin (?x) (?y)': x and y are cousins (a parent of x and a parent of y are siblings, but x and y are not siblings)
+    
     'grandparent (?x) (?y)': x is the grandparent of y
+    
     'grandchild (?x) (?y)': x is the grandchild of y 
 
-
+**ANSWER**
     friend_rule = IF( AND("person (?x)", "person (?y)"), THEN ("friend (?x) (?y)", "friend (?y) (?x)") )
 
     self = IF ( 'parent (?y) (?x)', THEN ('self (?x) (?x)') )
