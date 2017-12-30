@@ -158,24 +158,24 @@ def sort_best_first(graph, goalNode, agenda):
 generic_best_first = [do_nothing_fn, True, sort_best_first, False]
 
 
-def sort_brach_and_bound(graph, goalNode, agenda):
+def sort_branch_and_bound(graph, goalNode, agenda):
     return sorted(agenda, key=lambda path: path_length(graph, path))
 
-generic_branch_and_bound = [do_nothing_fn, False, sort_brach_and_bound, False]
+generic_branch_and_bound = [do_nothing_fn, False, sort_branch_and_bound, False]
 
 
-def sort_brach_and_bound_with_heuristic(graph, goalNode, agenda):
+def sort_branch_and_bound_with_heuristic(graph, goalNode, agenda):
     def heuristic(path):
         return graph.get_heuristic_value(path[-1], goalNode)
 
     return sorted(agenda, key=lambda path: path_length(graph, path) + heuristic(path))
 
 
-generic_branch_and_bound_with_heuristic = [do_nothing_fn, False, sort_brach_and_bound_with_heuristic, False]
+generic_branch_and_bound_with_heuristic = [do_nothing_fn, False, sort_branch_and_bound_with_heuristic, False]
 
-generic_branch_and_bound_with_extended_set = [do_nothing_fn, False, sort_brach_and_bound, True]
+generic_branch_and_bound_with_extended_set = [do_nothing_fn, False, sort_branch_and_bound, True]
 
-generic_a_star = [do_nothing_fn, False, sort_brach_and_bound_with_heuristic, True]
+generic_a_star = [do_nothing_fn, False, sort_branch_and_bound_with_heuristic, True]
 
 
 # Here is an example of how to call generic_search (uncomment to run):
@@ -191,14 +191,29 @@ generic_a_star = [do_nothing_fn, False, sort_brach_and_bound_with_heuristic, Tru
 ### OPTIONAL: Generic Beam Search
 
 # If you want to run local tests for generic_beam, change TEST_GENERIC_BEAM to True:
-TEST_GENERIC_BEAM = False
+TEST_GENERIC_BEAM = True
 
 # The sort_agenda_fn for beam search takes fourth argument, beam_width:
-# def my_beam_sorting_fn(graph, goalNode, paths, beam_width):
-#     # YOUR CODE HERE
-#     return sorted_beam_agenda
+def my_beam_sorting_fn(graph, goalNode, paths, beam_width):
+    if not paths:
+        return []
+    current_level = len(paths[-1])
+    level_extended = True
+    for path in paths:
+        has_extensions = len(graph.get_neighbors(path[-1])) > 0
+        if len(path) == (current_level - 1) and has_extensions:
+            level_extended = False
 
-generic_beam = [None, None, None, None]
+    if not level_extended:
+        return paths
+
+    def heuristic(path):
+        return graph.get_heuristic_value(path[-1], goalNode)
+
+    return sorted(paths, key=lambda path: heuristic(path))[:beam_width]
+
+
+generic_beam = [do_nothing_fn, False, my_beam_sorting_fn, False]
 
 
 # Uncomment this to test your generic_beam search:
@@ -268,12 +283,12 @@ def is_consistent(graph, goalNode):
 
 # If you want to run local tests on your heuristics, change TEST_HEURISTICS to True.
 #  Note that you MUST have completed generic a_star in order to do this:
-TEST_HEURISTICS = False
+TEST_HEURISTICS = True
 
 
 # heuristic_1: admissible and consistent
 
-[h1_S, h1_A, h1_B, h1_C, h1_G] = [None, None, None, None, None]
+[h1_S, h1_A, h1_B, h1_C, h1_G] = [6, 6, 7, 5, 0]
 
 heuristic_1 = {'G': {}}
 heuristic_1['G']['S'] = h1_S
@@ -285,7 +300,7 @@ heuristic_1['G']['G'] = h1_G
 
 # heuristic_2: admissible but NOT consistent
 
-[h2_S, h2_A, h2_B, h2_C, h2_G] = [None, None, None, None, None]
+[h2_S, h2_A, h2_B, h2_C, h2_G] = [6, 6, 8, 5, 0]
 
 heuristic_2 = {'G': {}}
 heuristic_2['G']['S'] = h2_S
@@ -296,8 +311,9 @@ heuristic_2['G']['G'] = h2_G
 
 
 # heuristic_3: admissible but A* returns non-optimal path to G
+# generic_search(*generic_a_star)(GRAPH_FOR_HEURISTICS, 'S', 'G'))
 
-[h3_S, h3_A, h3_B, h3_C, h3_G] = [None, None, None, None, None]
+[h3_S, h3_A, h3_B, h3_C, h3_G] = [1, 5, 4, 1, 0]
 
 heuristic_3 = {'G': {}}
 heuristic_3['G']['S'] = h3_S
@@ -309,7 +325,7 @@ heuristic_3['G']['G'] = h3_G
 
 # heuristic_4: admissible but not consistent, yet A* finds optimal path
 
-[h4_S, h4_A, h4_B, h4_C, h4_G] = [None, None, None, None, None]
+[h4_S, h4_A, h4_B, h4_C, h4_G] = [6, 6, 8, 5, 0]
 
 heuristic_4 = {'G': {}}
 heuristic_4['G']['S'] = h4_S
