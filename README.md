@@ -317,15 +317,15 @@ Generic search requires four arguments:
 
 Please implement the following search algorithms by designing the correct arguments to pass to the generic search algorithm. Your answer to each should be an ordered list of the appropriate four arguments to generic_search. No argument should be None. 
 
-generic_dfs = [None, None, None, None]
-generic_bfs = [None, None, None, None]
-generic_hill_climbing = [None, None, None, None]
-generic_best_first = [None, None, None, None]
-generic_branch_and_bound = [None, None, None, None]
-generic_branch_and_bound_with_heuristic = [None, None, None, None]
-generic_branch_and_bound_with_extended_set = [None, None, None, None]
-generic_a_star = [None, None, None, None]
-generic_beam = [None, None, None, None]
+      generic_dfs = [None, None, None, None]
+      generic_bfs = [None, None, None, None]
+      generic_hill_climbing = [None, None, None, None]
+      generic_best_first = [None, None, None, None]
+      generic_branch_and_bound = [None, None, None, None]
+      generic_branch_and_bound_with_heuristic = [None, None, None, None]
+      generic_branch_and_bound_with_extended_set = [None, None, None, None]
+      generic_a_star = [None, None, None, None]
+      generic_beam = [None, None, None, None]
 
 ### Part 4: Heuristics
 
