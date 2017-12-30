@@ -134,13 +134,16 @@ Part 1: Multiple Choice
 
   Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_4. If no rules match, answer '0'.
 
-**ANSWER_4 = '0'**
+  **ANSWER_4 = '0'**
 
-Question 5: Consider the following set of assertions about Garfield.
-assertions = ( 'Garfield is a hypothetical cat',
-               'Garfield likes lasagna' )
-Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_5. If no rules match, answer '0'.
-ANSWER_5 = '3'
+- Question 5: Consider the following set of assertions about Garfield.
+
+      assertions = ( 'Garfield is a hypothetical cat',
+                     'Garfield likes lasagna' )
+
+  Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_5. If no rules match, answer '0'.
+
+  **ANSWER_5 = '3'**
 
 ANSWER_6 = '1'
 
