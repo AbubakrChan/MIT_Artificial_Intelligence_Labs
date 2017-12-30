@@ -121,16 +121,20 @@ Part 1: Multiple Choice
                      'Kitty is alive',
                      'Kitty is dead' )
                      
-   Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_3. (For example, if
-   the assertions match rule1 and rule2, answer '12'.) If no rules match, answer '0'. 
+  Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_3. (For example, if
+  the assertions match rule1 and rule2, answer '12'.) If no rules match, answer '0'. 
+   
    **ANSWER_3 = '2'**
 
 - Question 4: Consider the following set of assertions about Nyan.
-assertions = ( 'Nyan is a hypothetical cat',
-               'Nyan is alive',
-               'Nyan is not alive' )
-Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_4. If no rules match, answer '0'.
-ANSWER_4 = '0'
+
+      assertions = ( 'Nyan is a hypothetical cat',
+                     'Nyan is alive',
+                     'Nyan is not alive' )
+
+  Which rules would match in the first round of forward chaining? Answer with a string of numbers in ANSWER_4. If no rules match, answer '0'.
+
+**ANSWER_4 = '0'**
 
 Question 5: Consider the following set of assertions about Garfield.
 assertions = ( 'Garfield is a hypothetical cat',
