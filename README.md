@@ -101,7 +101,7 @@ Part 1: Multiple Choice
  Consider the following rules about hypothetical cats.
  
  rule1 = IF( AND( '(?x) is a hypothetical cat',<br />
-                  '(?x) is alive',<br />
+ _________________'(?x) is alive',<br />
                   NOT('(?x) is alive')),<br /> 
              THEN( '(?x) is a paradox' ) ) 
 
