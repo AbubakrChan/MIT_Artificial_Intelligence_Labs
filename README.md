@@ -201,6 +201,7 @@ You're given this data about poker hands:
 Write a one-rule system that finds all other combinations of which poker hands beat which, transitively, given some of the rankings already. For example, it should be able to deduce that a three-of-a-kind beats a pair, because a three-of-a-kind beats two-pair and a two-pair beats a pair. The rankings (data) are all provided in the form '(?x) beats (?y)'. 
 
 **ANSWER**
+
       transitive_rule = IF( AND( '(?x) beats (?y)',
                                  '(?y) beats (?z)'),
                             THEN( '(?x) beats (?z)' ))
@@ -227,6 +228,7 @@ Your task is to deduce, wherever you can, the following relations:
     'grandchild (?x) (?y)': x is the grandchild of y 
 
 **ANSWER**
+
     friend_rule = IF( AND("person (?x)", "person (?y)"), THEN ("friend (?x) (?y)", "friend (?y) (?x)") )
 
     self = IF ( 'parent (?y) (?x)', THEN ('self (?x) (?x)') )
@@ -241,8 +243,21 @@ Your task is to deduce, wherever you can, the following relations:
 
     grandchild = IF ( 'grandparent (?x) (?y)', THEN('grandchild (?y) (?x)') )
 
+### Part 4: Backward Chaining
 
+      def backchain_to_goal_tree(rules, hypothesis):
+          """
+          Takes a hypothesis (string) and a list of rules (list
+          of IF objects), returning an AND/OR tree representing the
+          backchain of possible statements we may need to test
+          to determine if this hypothesis is reachable or not.
 
+          This method should return an AND/OR tree, that is, an
+          AND or OR object, whose constituents are the subgoals that
+          need to be tested. The leaves of this tree should be strings
+          (possibly with unbound variables), *not* AND or OR objects.
+          Make sure to use simplify(...) to flatten trees where appropriate.
+          """
 
 
 
