@@ -7,6 +7,7 @@ To test the code just go the directory of the lab (using cd) and write: python3 
 Note: Please let me know any suggestion or comment you could have about the code.
 
 ## Lab 0 - Getting Started
+
 Warm up Functions
       
       def is_even(x):
@@ -262,6 +263,23 @@ Your task is to deduce, wherever you can, the following relations:
 
 
 ## Lab 2 - Search
+
+This lab has two parts. In the first part of this lab, you'll write four helper functions which may be useful in Parts 2 and 3.
+
+In the second part of the lab, you'll implement both depth-first and breadth-first search, both of which take in an UndirectedGraph object, a start node, and a goal node, returning a path-to-goal if it exists, or None if such a path does not exist.
+
+In the third part of this lab, you'll create a generic search function generator which encapsulates all of the 6.034 search algorithms we have discussed, namely:
+
+    depth-first search,
+    breadth-first search,
+    beam search,
+    hill climbling,
+    branch and bound,
+    branch and bound with heuristic,
+    branch and bound with extended set, and
+    a star. 
+
+In the four part, you'll build a function to determine if a heuristic is admissible for a given graph and another function to determine if a heuristic is consistent.
 
 ### Part 1: Utility Functions 
 
