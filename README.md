@@ -511,4 +511,4 @@ With this in mind, which of the following is the best change you can make to you
       4. Set depth_limit to something tiny like 1 or 2, forcing your search to rely heavily on heuristics and not endgame scores.
       5. Instead of doing standard DFS search, have your algorithm explore the children of each node in a random order.
 
-   **ANSWER_4 = '5'**
+     **ANSWER_4 = '5'**
