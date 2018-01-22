@@ -503,7 +503,7 @@ Let's suppose we have a binary game tree of depth three, with eight leaves.
 
 - Question 4: This question could refer to any game tree. Suppose an adversary, Eve, knows the exact implementation of your alpha-beta search, as well as the static value (heuristic or endgame score) of every node in the game tree you're about to search. Before running your algorithm on a particular game tree, Eve may decide to reorder the children of any number of nodes in the tree. Being an adversary, Eve's intention is to order nodes so that your alpha-beta algorithm will prune as few leaves as possible. (Note Eve is not allowed to shear the tree -- i.e. change the parent of a node -- and Eve is not allowed to modify the tree once your algorithm has started running.)
 
-With this in mind, which of the following is the best change you can make to your algorithm to maximize the number of nodes that you can expect to prune? In other words, how can you make Eve's efforts worthless? Note that Eve will also see any changes you make to your code and will have an opportunity to reorder the tree after you make your changes!
+ With this in mind, which of the following is the best change you can make to your algorithm to maximize the number of nodes that you can expect to prune? In other words, how can you make Eve's efforts worthless? Note that Eve will also see any changes you make to your code and will have an opportunity to reorder the tree after you make your changes!
 
       1. Have your algorithm pick a random number n at the start of execution, then run alpha-beta on the game tree n times, averaging the results each time.
       2. Set heuristic_fn=always_zero, which means that the heuristic score for any node is zero.
